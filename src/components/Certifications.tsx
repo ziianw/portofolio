@@ -117,6 +117,9 @@ export default function Certifications() {
                     <Eye className="h-4 w-4" />
                   </motion.a>
                 </TooltipTrigger>
+                <TooltipContent side="top">
+                  <p>View Certificate</p>
+                </TooltipContent>
               </Tooltip>
             </motion.div></Reveal>
           ))}
@@ -157,6 +160,9 @@ export default function Certifications() {
                     <Eye className="h-4 w-4" />
                   </motion.a>
                 </TooltipTrigger>
+                <TooltipContent side="top">
+                  <p>View Certificate</p>
+                </TooltipContent>
               </Tooltip>
             </motion.div>
           </Reveal>

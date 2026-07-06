@@ -40,18 +40,52 @@ function ScrollProgress() {
 function IntroNotification() {
   const [dismissed, setDismissed] = useState(false);
 
-  // Smooth dismiss when user scrolls — interval polling because
-  // ScrollTrigger pin suppresses native scroll & RAF events
   useEffect(() => {
-    let active = true;
-    const id = setInterval(() => {
-      if (active && window.scrollY > 50) {
-        active = false;
-        setDismissed(true);
-        clearInterval(id);
+    let dismissed = false;
+
+    const dismiss = () => {
+      if (dismissed) return;
+      dismissed = true;
+      setDismissed(true);
+    };
+
+    // Auto-dismiss after 5 seconds as fallback
+    const timeout = setTimeout(dismiss, 5000);
+
+    // Native scroll event
+    const onScroll = () => {
+      if (window.scrollY > 30) dismiss();
+    };
+
+    // Mouse wheel / touchpad two-finger scroll
+    const onWheel = () => dismiss();
+
+    // Keyboard: PageDown, ArrowDown, Space, End
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (
+        ["PageDown", "ArrowDown", " ", "End"].includes(e.key) ||
+        e.key === "Space"
+      ) {
+        dismiss();
       }
-    }, 100);
-    return () => { active = false; clearInterval(id); };
+    };
+
+    // Touch on mobile
+    const onTouchMove = () => dismiss();
+
+    // Register all listeners
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("wheel", onWheel, { passive: true });
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("touchmove", onTouchMove);
+    };
   }, []);
 
   return (
@@ -110,18 +144,22 @@ function Index() {
         <IntroAnimation onIntroComplete={() => setIntroDone(true)} />
         <IntroNotification />
       </div>
-      <Navbar hidden={!introDone} />
-      <main className="relative z-10">
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Testimonials />
-        <Certifications />
-        {/* <Gallery /> */}
-        <Contact />
-      </main>
+      {introDone && (
+        <>
+          <Navbar />
+          <main className="relative z-10">
+            <Hero />
+            <About />
+            <Experience />
+            <Projects />
+            <Skills />
+            <Testimonials />
+            <Certifications />
+            {/* <Gallery /> */}
+            <Contact />
+          </main>
+        </>
+      )}
     </div>
   );
 }

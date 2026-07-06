@@ -12,7 +12,7 @@ const links = [
   // { href: "#contact", label: "Contact" },
 ];
 
-export default function Navbar({ hidden = false }: { hidden?: boolean }) {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -25,7 +25,7 @@ export default function Navbar({ hidden = false }: { hidden?: boolean }) {
   return (
     <motion.header
       initial={{ y: -40, opacity: 0 }}
-      animate={{ y: hidden ? -80 : 0, opacity: hidden ? 0 : 1 }}
+      animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-[padding] duration-300 ease-out ${scrolled ? "py-2 md:py-3" : "py-4 md:py-5"}`}
     >

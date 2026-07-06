@@ -49,7 +49,7 @@ export default function Hero() {
           Hi, I'm <span className="text-gradient">Zian Wahidi</span>
           <br />
           <span className="block mt-2 md:mt-3 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-muted-foreground">
-            an{" "}
+            {["a", "e", "i", "o", "u"].includes(roles[roleIdx].charAt(0).toLowerCase()) ? "an" : "a"}{" "}
             <AnimatePresence mode="wait">
               <motion.span
                 key={roleIdx}

@@ -33,7 +33,8 @@ export default function IntroAnimation({ onIntroComplete }: Props) {
           trigger: wrapper,
           pin: true,
           start: "top top",
-          end: "+=6000px",
+          // Quick snap: intro completes right after text finishes revealing
+          end: "+=600px",
           scrub: 1,
           onLeave: () => onIntroComplete?.(),
           onEnterBack: () => onIntroComplete?.(),
