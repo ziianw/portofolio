@@ -39,7 +39,7 @@ const testimonials = [
     quote:
       "Selama satu tahun masa magangnya di PT Dutaraya Dinametro, Zian telah memberikan kontribusi yang luar biasa. Zian telah menunjukkan dedikasi dan kinerja yang sangat baik dalam berbagai bidang, mulai dari membuat website perusahaan, membantu proses administrasi keuangan, hingga memberikan dukungan teknis terkait kebutuhan karyawan. Selain itu, Zian juga terlibat secara aktif dalam proses tender untuk mendapatkan proyek pemerintah dan berhasil mempelajari proses bisnis perusahaan dengan cepat dan mendalam. Keberhasilan ini tidak hanya mencerminkan kemampuan teknisnya tetapi juga etos kerjanya yang luar biasa. Terima kasih, Zian, atas semua kontribusi dan kerja keras yang telah diberikan. Kami mendoakan kesuksesanmu di masa depan!",
     initials: "KS",
-    photo: "/assets/testimonials/karunia.jpg",
+    photo: "/assets/testimonials/sekar.jpeg",
   },
   // {
   //   name: "Event Manager",
