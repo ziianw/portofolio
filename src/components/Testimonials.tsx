@@ -12,6 +12,7 @@ const testimonials = [
     quote:
       "Zian is a responsible student, eager to learn, shows motivation and capable leader. Bright future ahead for Zian!",
     initials: "WT",
+    photo: "/assets/testimonials/wahyuningdiah.jpg",
   },
   {
     name: "Mr. Muhammad Darwis, S.Kom., M. Kom",
@@ -20,6 +21,7 @@ const testimonials = [
     quote:
       "Zian memiliki jiwa kepempinan yang baik. Bertanggung jawab, bersahaja dan selalu merangkul teman-teman yang lain. Zian sangat berpotensi dimasa depan. Tetap semangat!",
     initials: "MD",
+    photo: "/assets/testimonials/darwis.jpg",
   },
   {
     name: "Mrs. Manda Ramadhani",
@@ -28,6 +30,7 @@ const testimonials = [
     quote:
       "Sebagai rekan kerja, bagi saya Zian Wahidi adalah seorang yang sangat tekun, memiliki jiwa integritas yang tinggi dan selalu mencari pengetahuan mengenai teknologi yang berkembang pada saat ini. Dalam hal ini tentunya beliau banyak mendapatkan ilmu yang dapat dikembangkan untuk masa depannya, Dalam hal kolaborasi beliau selalu aktif baik dengan pimpinan, sesama rekan kerja dan juga pihak external seperti client, vendor maupun customer. Beliau sangat sering berdiskusi, berbagi ilmu dan juga pengalaman dalam hal pembelajaran. Semangat terus untuk Zian, semoga selalu menjadi inspirasi bagi semua orang",
     initials: "MR",
+    photo: "/assets/testimonials/ramadhani.jpg",
   },
   {
     name: "Karunia Sekar Dwi Meylany, A.m.d Ak, CTT",
@@ -36,6 +39,7 @@ const testimonials = [
     quote:
       "Selama satu tahun masa magangnya di PT Dutaraya Dinametro, Zian telah memberikan kontribusi yang luar biasa. Zian telah menunjukkan dedikasi dan kinerja yang sangat baik dalam berbagai bidang, mulai dari membuat website perusahaan, membantu proses administrasi keuangan, hingga memberikan dukungan teknis terkait kebutuhan karyawan. Selain itu, Zian juga terlibat secara aktif dalam proses tender untuk mendapatkan proyek pemerintah dan berhasil mempelajari proses bisnis perusahaan dengan cepat dan mendalam. Keberhasilan ini tidak hanya mencerminkan kemampuan teknisnya tetapi juga etos kerjanya yang luar biasa. Terima kasih, Zian, atas semua kontribusi dan kerja keras yang telah diberikan. Kami mendoakan kesuksesanmu di masa depan!",
     initials: "KS",
+    photo: "/assets/testimonials/karunia.jpg",
   },
   // {
   //   name: "Event Manager",
@@ -119,8 +123,21 @@ export default function Testimonials() {
                 "{t.quote}"
               </p>
               <div className="mt-6 flex items-center gap-4 pt-6 border-t border-white/10">
-                <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-hero-gradient text-primary-foreground font-bold">
-                  {t.initials}
+                <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-hero-gradient overflow-hidden">
+                  {t.photo ? (
+                    <img
+                      src={t.photo}
+                      alt={t.name}
+                      className="h-full w-full object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = "none";
+                        (e.target as HTMLImageElement).nextElementSibling?.classList.remove("hidden");
+                      }}
+                    />
+                  ) : null}
+                  <span className={`text-primary-foreground font-bold text-sm ${t.photo ? "hidden" : ""}`}>
+                    {t.initials}
+                  </span>
                 </div>
                 <div className="min-w-0">
                   <p className="font-semibold text-sm truncate">{t.name}</p>

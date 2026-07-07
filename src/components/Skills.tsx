@@ -15,9 +15,9 @@ const groups = [
       "Laravel",
       "MySQL",
       "Bootstrap",
+      "Tailwind CSS",
       "Framer Motion",
       "Three.js",
-      "Tailwind CSS",
     ],
   },
   {
@@ -25,6 +25,7 @@ const groups = [
     title: "DevOps & Cloud",
     items: [
       "Git",
+      "Vercel",
       "Amazon EC2",
       "cPanel",
       "PuTTY",
@@ -43,6 +44,7 @@ const groups = [
       "Access Point Configuration",
       "Printer Setup",
       "Backup & Recovery",
+      "Drone Videographer / Photographer",
     ],
   },
   {
@@ -51,7 +53,7 @@ const groups = [
     items: [
       "OBS Studio",
       "vMix",
-      "AutoCAD 2022",
+      "Capcut",
       "Adobe Premiere Pro",
       "Canva",
       "SAP Build Apps",
