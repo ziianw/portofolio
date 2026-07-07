@@ -55,7 +55,7 @@ export default function About() {
                   <p className="text-xs text-muted-foreground uppercase tracking-wider">
                     Based in
                   </p>
-                  <p className="font-semibold">Jakarta Timur, DKI Jakarta</p>
+                  <p className="font-semibold">East Jakarta, DKI Jakarta</p>
                 </div>
               </motion.div>
               <motion.div
@@ -69,9 +69,9 @@ export default function About() {
                   <p className="text-xs text-muted-foreground uppercase tracking-wider">
                     Education
                   </p>
-                  <p className="font-semibold">Universitas Paramadina</p>
+                  <p className="font-semibold">Paramadina University</p>
                   <p className="text-xs text-muted-foreground">
-                    Teknik Informatika
+                    Informatics Engineering
                   </p>
                 </div>
               </motion.div>
@@ -86,7 +86,7 @@ export default function About() {
                   <p className="text-xs text-muted-foreground uppercase tracking-wider">
                     Focus
                   </p>
-                  <p className="font-semibold">Web · Dashboard · Networking</p>
+                  <p className="font-semibold">Web · Dashboard · Networking · Problemsolving</p>
                 </div>
               </motion.div>
             </div>
