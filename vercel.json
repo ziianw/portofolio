@@ -1,8 +1,4 @@
 {
-  "buildCommand": "npm run build",
-  "installCommand": "npm install",
-  "framework": "tanstack-start",
-  "env": {
-    "NITRO_PRESET": "vercel"
-  }
+  "buildCommand": "NITRO_PRESET=vercel vite build",
+  "installCommand": "npm install"
 }

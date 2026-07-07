@@ -12,7 +12,6 @@ export default defineConfig({
     tailwindcss(),
     tanstackStart({
       server: {
-        // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
         entry: "server",
       },
     }),
