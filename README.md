@@ -1,563 +1,76 @@
-# Portfolio — Zian Wahidi
+# 🌐 Interactive Personal Portfolio & On-Device AI Assistant
 
-Website portofolio pribadi berisi profil, pengalaman kerja, project, sertifikasi, testimoni, dan **asisten AI lokal** yang bisa menjawab pertanyaan seputar Zian.
+A modern, high-performance personal portfolio showcasing full-stack projects, creative productions, and an on-device conversational AI engine built entirely without external LLM APIs.
 
-🔗 **Live:** _isi URL Vercel Anda di sini_ — lihat [Panduan Deploy](#6--panduan-deploy)
-📦 **Repo:** [github.com/ziianw/portofolio](https://github.com/ziianw/portofolio)
-
----
-
-## Daftar Isi
-
-1. [Teknologi yang Dipakai](#1-teknologi-yang-dipakai)
-2. [Struktur Project](#2-struktur-project)
-3. [Menjalankan di Komputer Sendiri](#3-menjalankan-di-komputer-sendiri)
-4. [Cara Update Konten](#4-cara-update-konten)
-5. [Cara Update Asisten AI](#5-cara-update-asisten-ai)
-6. [🚀 Panduan Deploy](#6--panduan-deploy)
-7. [Alur Kerja Git Sehari-hari](#7-alur-kerja-git-sehari-hari)
-8. [Keamanan](#8-keamanan)
-9. [Troubleshooting](#9-troubleshooting)
-10. [Catatan Teknis & Utang Teknis](#10-catatan-teknis--utang-teknis)
+🔗 **Live Demo:** [ziianw.vercel.app](https://ziianw.vercel.app) *(sesuaikan URL)*  
+📦 **Repository:** [github.com/ziianw/portofolio](https://github.com/ziianw/portofolio)
 
 ---
 
-## 1. Teknologi yang Dipakai
+## ✨ Key Highlights
 
-| Kategori | Teknologi |
+* **3D Visuals & Smooth Motion:** Immersive visual experience using Three.js (`@react-three/fiber`), GSAP (ScrollTrigger, SplitText), and Framer Motion.
+* **Client-Side AI Assistant:** An offline, zero-latency local conversational agent running 100% in-browser with zero API fees.
+* **Modern UI System:** Built with Tailwind CSS v4, shadcn/ui, and Radix UI for clean accessibility and responsive performance.
+* **Dynamic Media Showcase:** Interactive project cards featuring direct video stream previews and structured tags.
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Technologies |
 |---|---|
-| Bahasa | TypeScript |
-| Framework | React 19 |
-| Build tool | Vite 8 (Rolldown) |
-| Styling | Tailwind CSS v4 |
-| Animasi | Framer Motion, GSAP (ScrollTrigger, SplitText) |
-| 3D | Three.js via `@react-three/fiber` |
-| Komponen UI | shadcn/ui + Radix UI |
-| Ikon | lucide-react |
-| Routing | Single-page (lihat catatan di bawah) |
-| Deployment | Vercel |
-
-> **Catatan routing:** project ini **bukan** aplikasi multi-halaman. Entry point aslinya adalah
-> `index.html` → `src/main.tsx` → `src/App.tsx`. Folder `src/routes/` berisi sisa scaffolding
-> TanStack Start yang **tidak dipakai**. Jangan mengeditnya kalau ingin perubahan terlihat.
+| **Core** | TypeScript, React 19, Vite 8 (Rolldown) |
+| **Styling & UI** | Tailwind CSS v4, shadcn/ui, Radix UI, Lucide Icons |
+| **Animations & 3D** | Three.js, `@react-three/fiber`, GSAP, Framer Motion |
+| **Deployment** | Vercel (CI/CD Pipeline via GitHub) |
 
 ---
 
-## 2. Struktur Project
+## 🚀 Featured Works Inside
 
-```
-.
-├── index.html                  # Entry HTML
-├── vercel.json                 # Konfigurasi deploy Vercel (SPA rewrite)
-├── package.json
-├── vite.config.ts
-├── tsconfig.json
-├── eslint.config.js
-├── .gitignore
-│
-├── public/                     # File statis, disajikan apa adanya
-│   ├── assets/
-│   │   ├── projects/           # Thumbnail project (.png / .mp4)
-│   │   └── testimonials/
-│   ├── certificates/           # PDF sertifikat
-│   └── "Curriculum Vitae Zian Wahidi.pdf"
-│
-└── src/
-    ├── main.tsx                # Bootstrap React
-    ├── App.tsx                 # ✅ ROOT komponen — urutan section ada di sini
-    ├── styles.css              # Tailwind + custom CSS
-    │
-    ├── components/
-    │   ├── Navbar.tsx
-    │   ├── Hero.tsx
-    │   ├── About.tsx
-    │   ├── Experience.tsx
-    │   ├── Projects.tsx        # 🎯 Daftar project portofolio
-    │   ├── Skills.tsx
-    │   ├── Testimonials.tsx
-    │   ├── Certifications.tsx  # 🎯 Daftar sertifikasi
-    │   ├── Contact.tsx         # 🎯 Berisi chat AI inline
-    │   ├── AIChat.tsx          # Chat AI versi tombol melayang (belum aktif)
-    │   ├── AIAnswerView.tsx    # Renderer jawaban AI (kotak + chip)
-    │   ├── IntroAnimation.tsx  # Animasi intro yang di-pin
-    │   ├── Scene3D.tsx         # Background 3D
-    │   └── ui/                 # Komponen shadcn/ui
-    │
-    ├── lib/
-    │   ├── cv-data.ts          # 🎯 Knowledge base AI (format teks CV)
-    │   ├── local-ai.ts         # 🎯 Mesin AI: topik + keyword + jawaban
-    │   └── utils.ts            # Helper (cn, formatBold)
-    │
-    ├── routes/                 # ⚠️ TIDAK DIPAKAI (sisa scaffolding)
-    └── hooks/
-```
-
-**3 file yang paling sering Anda ubah:**
-
-| Ingin mengubah | Edit file |
-|---|---|
-| Daftar project | `src/components/Projects.tsx` |
-| Isi CV / data untuk AI | `src/lib/cv-data.ts` |
-| Cara AI menjawab | `src/lib/local-ai.ts` |
+* **SOWATRACE:** Web-based ESG logistics monitoring dashboard & warehouse management system featuring FEFO inventory logic.
+* **Event Management Systems:** Modern RSVP marketing & registration dashboards with automated export reporting.
+* **Document Management System (DMS):** Centralized finance document numbering engine and archive management.
+* **Event Production & Media:** Corporate microsites and multimedia production assets for enterprise events.
 
 ---
 
-## 3. Menjalankan di Komputer Sendiri
+## 💻 Local Development
 
-### Prasyarat
+### Prerequisites
 
-- **Node.js 20+** — cek dengan `node -v`
-- **Git**
+* Node.js 20+
+* npm or pnpm
 
-### Langkah
+### Getting Started
 
-```powershell
-git clone https://github.com/ziianw/portofolio.git
+bash
+# Clone the repository
+git clone [https://github.com/ziianw/portofolio.git](https://github.com/ziianw/portofolio.git)
+
+# Navigate to project folder
 cd portofolio
+
+# Install dependencies
 npm install
+
+# Start development server
 npm run dev
-```
+Open http://localhost:5173 in your browser.
 
-Buka **http://localhost:5173**
+Available Scripts
+npm run dev — Starts local dev server with HMR.
 
-### Daftar Script
+npm run build — Compiles and optimizes assets into dist/.
 
-| Perintah | Fungsi |
-|---|---|
-| `npm run dev` | Jalankan server development (hot reload) |
-| `npm run build` | Build untuk production → hasil di folder `dist/` |
-| `npm run preview` | Uji hasil build production secara lokal |
-| `npm run lint` | Cek error kode dengan ESLint |
-| `npm run format` | Rapikan format kode dengan Prettier |
+npm run preview — Locally tests production build.
 
-> ⚠️ **Pengguna Windows + PowerShell:** jika muncul error
-> `npm.ps1 cannot be loaded because running scripts is disabled`, pakai `npm.cmd`:
->
-> ```powershell
-> npm.cmd run dev
-> ```
->
-> Penyebabnya adalah Execution Policy PowerShell, bukan project ini.
+npm run lint — Runs ESLint checks.
 
----
+📬 Contact & Connect
+Website: ziianw.vercel.app (sesuaikan URL)
 
-## 4. Cara Update Konten
+LinkedIn: linkedin.com/in/zianwhd
 
-### Menambah Project Baru
-
-Edit array `projects` di `src/components/Projects.tsx`:
-
-```tsx
-{
-  title: "Nama Project",
-  year: 2026,
-  category: "Dashboard",        // harus salah satu dari daftar `categories`
-  icon: FolderKanban,           // ikon lucide-react
-  gradient: "from-cyan-600 to-blue-700",
-  video: "/assets/projects/nama-file.mp4",   // opsional
-  photo: "/assets/projects/nama-file.png",   // opsional
-  desc: "Deskripsi singkat satu kalimat.",
-  url: "https://link-project.com",           // "" jika belum ada
-},
-```
-
-| Field | Keterangan |
-|---|---|
-| `category` | Harus cocok dengan salah satu di `const categories = ["All", "Web", "Dashboard", "Videographer"]` |
-| `video` / `photo` | Cukup salah satu. Prioritas render: **video → photo → gradient** |
-| `url` | Kosong (`""`) → kartu menampilkan tombol **Contact Me** alih-alih **View Project** |
-
-**Menaruh file media:** simpan di `public/assets/projects/`, lalu rujuk sebagai `/assets/projects/nama-file`.
-
-**Tips ukuran file:** untuk video, gunakan MP4 (H.264) terkompresi. Usahakan **di bawah 10 MB**
-per video. GitHub membatasi 100 MB per file, dan Vercel memuat file ini ke setiap pengunjung.
-
-### Mengubah Sertifikasi
-
-Edit array `certs` di `src/components/Certifications.tsx`. Simpan PDF-nya di `public/certificates/`.
-
-### Mengubah Pengalaman Kerja
-
-Edit array `experiences` di `src/components/Experience.tsx`.
-
-### Mengubah Urutan Section
-
-Edit `src/App.tsx` — urutan komponen di dalam `<main>` menentukan urutan tampil.
-
----
-
-## 5. Cara Update Asisten AI
-
-Asisten AI berjalan **100% di browser** — tidak ada API key, tidak ada biaya, tidak ada server.
-
-### Cara kerja
-
-```mermaid
-flowchart LR
-    A[Pertanyaan user] --> B[Normalisasi teks]
-    B --> C[Sapaan? → balas sapaan]
-    C --> D[Hitung skor tiap keyword]
-    D --> E[Ambil skor tertinggi = paling spesifik]
-    E --> F[Render: lead + kotak + chip]
-    F --> G[User klik chip → gali lebih dalam]
-```
-
-Skor kecocokan = **panjang keyword**. Jadi keyword yang lebih spesifik (lebih panjang) selalu menang.
-
-### Menambah topik baru
-
-Tambahkan objek ke array `TOPICS` di `src/lib/local-ai.ts`:
-
-```ts
-{
-  id: "topik-baru",
-  keywords: ["frasa panjang yang spesifik", "kata-kata", "sinonim"],
-  build: () => ({
-    lead: "Kalimat pembuka singkat — usahakan memancing rasa ingin tahu.",
-    boxes: [
-      { title: "📦 Judul Kotak", items: ["Poin pertama", "Poin **tebal**"] },
-    ],
-    chips: [CHIP.project, "Pertanyaan lanjutan lain?"],
-  }),
-},
-```
-
-### ⚠️ Jebakan yang sering terjadi
-
-**1. Keyword generik mengalahkan keyword spesifik**
-
-Pertanyaan `"hal menarik tentang Zian?"` pernah salah masuk ke topik profil umum, karena
-`"tentang zian"` (12 huruf) mengalahkan `"hal menarik"` (11 huruf).
-
-✅ **Solusinya:** daftarkan **frasa utuh** sebagai keyword → `"hal menarik tentang zian"` (23 huruf).
-
-**2. Chip yang tidak mengarah ke mana pun**
-
-Chip adalah tombol lanjutan yang diklik user, jadi teksnya **harus** cocok dengan salah satu
-topik. Gunakan konstanta `CHIP.*` yang sudah terpusat agar konsisten.
-
-**3. Jawaban terlalu panjang (dumping)**
-
-Jangan buang semua data sekaligus. Tampilkan **ringkasan** + `chips`, biarkan user memilih
-bagian yang ingin digali.
-
-### Menguji perubahan
-
-Jalankan `npm run dev`, buka chat AI di section **Contact**, lalu coba:
-
-| Pertanyaan | Topik yang diharapkan |
-|---|---|
-| `apa hobi Zian?` | 📚 Hobi & Bacaan |
-| `sowatrace?` | 📊 SOWATRACE |
-| `sertifikasi apa saja?` | 🎓 Ringkasan Sertifikasi |
-| `kenapa profil Zian berbeda?` | 🧩 Tiga Peran dalam Satu Orang |
-| `halo` | Salam + chip pilihan |
-
-### Menghidupkan tombol chat melayang
-
-`src/components/AIChat.tsx` sudah lengkap dan memakai `AIAnswerView`, **tetapi belum
-dirender** di `src/App.tsx`. Kalau ingin tombol chat melayang di kanan bawah:
-
-```tsx
-// src/App.tsx
-import AIChat from "./components/AIChat";
-
-// ...lalu di dalam return, setelah </main>:
-<AIChat />
-```
-
----
-
-## 6. 🚀 Panduan Deploy
-
-Ada 3 cara. **Cara 1 adalah yang utama** dan sudah aktif untuk repo ini.
-
-### Cara 1 — Otomatis lewat GitHub (paling praktis) ⭐
-
-Vercel terhubung ke repo GitHub. Setiap kali Anda push ke branch `main`, Vercel otomatis
-build dan deploy. **Tidak ada perintah tambahan yang perlu dijalankan.**
-
-```mermaid
-flowchart LR
-    A[Edit kode di VS Code] --> B[npm run build<br/>uji lokal]
-    B --> C[git add .]
-    C --> D[git commit -m "pesan"]
-    D --> E[git push origin main]
-    E --> F[Vercel otomatis build & deploy]
-    F --> G[Website live ter-update]
-```
-
-**Langkah lengkapnya:**
-
-```powershell
-# 1. Pastikan build sukses dulu (jangan sampai deploy gagal)
-npm.cmd run build
-
-# 2. Lihat file apa saja yang berubah
-git status
-
-# 3. Panggung semua perubahan
-git add .
-
-# 4. Commit dengan pesan yang jelas
-git commit -m "feat: tambah project Sowatrace"
-
-# 5. Kirim ke GitHub → Vercel otomatis deploy
-git push origin main
-```
-
-**Cek status deploy:**
-
-1. Buka [vercel.com/dashboard](https://vercel.com/dashboard)
-2. Pilih project ini → tab **Deployments**
-3. Deploy terbaru akan berstatus **Building** → **Ready**
-
-Tunggu sekitar **1–3 menit**. Kalau statusnya **Error**, klik deployment-nya dan baca bagian
-*Build Logs* untuk melihat pesan errornya.
-
-### Cara 2 — Deploy Manual dari Komputer (Vercel CLI)
-
-Pakai ini kalau ingin deploy tanpa lewat GitHub, misalnya untuk preview cepat.
-
-```powershell
-# Install sekali saja
-npm i -g vercel
-
-# Login (sekali saja)
-vercel login
-
-# Deploy ke preview (bukan production)
-vercel
-
-# Deploy ke production
-vercel --prod
-```
-
-### Cara 3 — Upload Folder Hasil Build (drag & drop)
-
-Cara paling sederhana kalau tidak mau pakai Git sama sekali:
-
-```powershell
-npm.cmd run build
-```
-
-Lalu buka [vercel.com/new](https://vercel.com/new) dan **drag folder `dist/`** ke halaman itu.
-
-> ⚠️ Cara ini **tidak** terhubung ke Git, jadi setiap ada perubahan Anda harus upload ulang manual.
-
-### Rollback — Kembalikan ke Versi Sebelumnya
-
-Kalau deploy terbaru bermasalah:
-
-**Lewat Vercel Dashboard:**
-
-1. Buka **Deployments**
-2. Cari deployment lama yang masih bagus
-3. Klik ikon `⋯` → **Promote to Production**
-
-**Lewat Git (batalkan perubahan kode):**
-
-```powershell
-git revert HEAD        # buat commit baru yang membatalkan commit terakhir
-git push origin main   # Vercel akan deploy versi hasil revert
-```
-
-### Hal yang perlu diperhatikan sebelum deploy
-
-- ✅ Selalu jalankan `npm.cmd run build` dulu — memastikan tidak ada error TypeScript
-- ✅ File di dalam `public/` ikut ter-upload ke setiap pengunjung, jadi jaga ukurannya
-- ✅ Jangan commit `.env` (lihat [bagian Keamanan](#8-keamanan))
-- ✅ Kalau menambah environment variable, set di **Vercel → Settings → Environment Variables**,
-  bukan di file yang di-commit
-
----
-
-## 7. Alur Kerja Git Sehari-hari
-
-### Menyimpan perubahan
-
-```powershell
-git status                 # lihat apa yang berubah
-git add .                  # tandai semua perubahan
-git commit -m "pesan"      # bungkus jadi satu riwayat
-git push origin main       # kirim ke GitHub
-```
-
-### Konvensi pesan commit
-
-| Awalan | Untuk |
-|---|---|
-| `feat:` | Fitur atau konten baru |
-| `fix:` | Perbaikan bug |
-| `docs:` | Perubahan dokumentasi |
-| `style:` | Perubahan tampilan/CSS saja |
-| `chore:` | Perawatan (update dependency, config) |
-
-Contoh: `feat: tambah 3 project video`, `fix: perbaiki typo deskripsi Sowatrace`
-
-### Melihat riwayat
-
-```powershell
-git log --oneline -10          # 10 commit terakhir
-git diff HEAD~1                # perubahan di commit terakhir
-git show <hash>                # detail satu commit
-```
-
-### Membatalkan perubahan
-
-```powershell
-git restore nama-file.tsx      # batalkan perubahan yang belum di-commit
-git reset --soft HEAD~1        # batalkan commit terakhir, perubahan tetap ada di staging
-```
-
----
-
-## 8. Keamanan
-
-### ⚠️ Jangan pernah commit file rahasia
-
-File berikut **sudah** diabaikan oleh `.gitignore`:
-
-```
-.env
-.env.*
-!.env.example
-```
-
-Kalau nanti butuh menyimpan konfigurasi rahasia:
-
-- **Lokal:** taruh di `.env` (otomatis diabaikan Git)
-- **Production:** set di **Vercel → Settings → Environment Variables**
-- **Dokumentasi:** buat `.env.example` berisi nama variabel **tanpa nilai**
-
-### Kalau rahasia sudah telanjur ter-commit
-
-GitHub punya **Push Protection** yang akan menolak push berisi rahasia dengan pesan
-`GH013: Repository rule violations found`. Penting dipahami:
-
-> GitHub memindai **seluruh riwayat** yang akan di-push, bukan hanya kondisi file terakhir.
-> Jadi membersihkan file dengan commit baru **tidak cukup** — riwayatnya harus ditulis ulang.
-
-Langkah perbaikannya:
-
-```powershell
-# 1. Backup dulu
-git branch backup-sebelum-bersih
-
-# 2. Rata-kan commit lokal menjadi satu (jika semuanya belum di-push)
-git reset --soft origin/main
-git rm --cached .env
-
-# 3. Tambahkan pola .env ke .gitignore, lalu commit ulang
-git add .gitignore
-git commit -m "chore: hapus .env dari riwayat"
-
-# 4. Push
-git push origin main
-```
-
-**Setelah berhasil, wajib:**
-
-1. **Rotate/revoke rahasianya** — anggap key itu sudah bocor
-2. **Hapus branch backup**, karena branch tersebut masih menyimpan rahasianya:
-   ```powershell
-   git branch -D backup-sebelum-bersih
-   git reflog expire --expire=now --all
-   git gc --prune=now
-   ```
-
----
-
-## 9. Troubleshooting
-
-### `npm.ps1 cannot be loaded because running scripts is disabled`
-
-**Bukan** masalah project — ini kebijakan PowerShell Windows. Solusi:
-
-```powershell
-npm.cmd run dev
-```
-
-Atau ubah kebijakan (sekali saja, jalankan PowerShell **as Administrator**):
-
-```powershell
-Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
-```
-
-### Halaman terasa "kosong" saat pertama dibuka
-
-**Bukan bug.** Website punya animasi intro yang di-pin (GSAP ScrollTrigger). Konten utama
-baru dirender setelah user scroll melewati intro. Kalau ingin menguji section tertentu
-saat development, scroll ke bawah beberapa kali.
-
-### Perubahan kode tidak muncul di browser
-
-1. Cek terminal `npm run dev` — apakah ada pesan error?
-2. Coba hard reload: `Ctrl + Shift + R`
-3. Hentikan dev server (`Ctrl + C`) lalu jalankan ulang
-
-### Video project tidak muncul
-
-- Pastikan file ada di `public/assets/projects/`
-- Pastikan path-nya diawali `/assets/projects/` (bukan `public/`)
-- Pastikan formatnya MP4 (H.264) — browser tidak memutar semua codec
-- Cek ukuran file — video besar memerlukan waktu loading lebih lama
-
-### Chat AI menjawab "belum punya datanya"
-
-Artinya tidak ada keyword yang cocok di `TOPICS`. Solusinya: tambahkan frasa dari pertanyaan
-tersebut sebagai keyword di topik yang sesuai (lihat [bagian 5](#5-cara-update-asisten-ai)).
-
-### Reset dev server dari nol
-
-```powershell
-# Hentikan dengan Ctrl + C, lalu:
-Remove-Item -Recurse -Force node_modules, dist
-npm install
-npm.cmd run dev
-```
-
----
-
-## 10. Catatan Teknis & Utang Teknis
-
-Hal-hal ini **bukan bug** tetapi perlu diketahui sebelum mengubah project.
-
-### Ini sudah beres
-
-| Item | Keterangan |
-|---|---|
-| **`.env` bocor** | Sudah dikeluarkan dari Git dan ditambahkan ke `.gitignore`. Pastikan rahasianya sudah di-rotate. |
-| **Email Git rusak** | Sudah diperbaiki. Commit-commit lama sebelum `aa73369` masih salah dan tidak akan muncul di grafik kontribusi GitHub. |
-| **`README.md` rusak** | File lama hanya berisi `# portfolio` dengan encoding UTF-16. Sudah diganti dengan dokumen ini (UTF-8). |
-
-### Belum beres — perlu keputusan
-
-| Item | Dampak | Saran |
-|---|---|---|
-| `src/routes/`, `src/router.tsx`, `src/routeTree.gen.ts`, `src/start.ts`, `src/server.ts` | Sisa scaffolding TanStack Start yang tidak dipakai — membingungkan saat dibaca | Hapus kalau sudah yakin tidak diperlukan |
-| `prettierrc` & `prettierignore` **tanpa titik** | Prettier hanya membaca `.prettierrc`. Jadi `npm run format` memakai setting default, bukan setting Anda | Rename jadi `.prettierrc` dan `.prettierignore` |
-| `gitignore` **tanpa titik** | Duplikat dari `.gitignore`, ikut ter-commit, tidak berpengaruh apa pun | Hapus |
-| `AIChat.tsx` | Sudah lengkap tapi belum dirender — jadi tombol chat melayang tidak muncul | Tambahkan `<AIChat />` di `App.tsx` |
-| `check-bom.js` | Path-nya masih hardcoded ke folder lama (`d:\Portofolio Zian Wahidi`) sehingga error | Hapus (tidak dipakai project) |
-| `AGENTS.md` | File kosong (0 byte) | Hapus atau isi |
-| Bundle size ~618 kB | Ada peringatan chunk > 500 kB saat build | Normal untuk aplikasi dengan Three.js & GSAP |
-
-### Cara memastikan kode sehat
-
-```powershell
-npm.cmd run lint      # cek error ESLint
-npm.cmd run build     # cek error TypeScript + build production
-```
-
-Keduanya harus selesai tanpa error. Peringatan *chunk size* aman untuk diabaikan.
-
----
-
-## Lisensi & Kontak
-
-Konten pribadi (CV, sertifikat, foto, dan project) adalah milik **Zian Wahidi**.
-
-- ✉️ Email — zianwhd@gmail.com
-- 💼 LinkedIn — [linkedin.com/in/zianwhd](https://www.linkedin.com/in/zianwhd)
-- 📸 Instagram — [@zianwhd](https://instagram.com/zianwhd)
+Email: zianwhd@gmail.com
