@@ -7,22 +7,37 @@ import {
   BookOpen,
   ExternalLink,
   FolderKanban,
+  type LucideIcon,
 } from "lucide-react";
 import Tilt3D from "./Tilt3D";
 import Reveal from "./Reveal";
 
-const projects = [
+type Project = {
+  title: string;
+  year: number;
+  category: string;
+  icon: LucideIcon;
+  gradient: string;
+  /** Thumbnail image (ignored when `video` is set) */
+  photo?: string;
+  /** Thumbnail video — autoplay, loop, muted */
+  video?: string;
+  desc: string;
+  url: string;
+};
+
+const projects: Project[] = [
   {
     title: "Sowatrace Dashboard",
     year: 2026,
     category: "Dashboard",
     icon: FolderKanban,
     gradient: "from-cyan-600 to-blue-700",
-    photo: "/assets/projects/dbrd-3.png",
+    video: "/assets/projects/sowatrce.mp4",
     desc: "Digital logistics monitoring dashboard focused on ESG transparency and real-time operational data tracking.",
     url: "",
   },
-    {
+      {
     title: "Pusat Hiperkes K3 DKI Jakarta",
     year: 2026,
     category: "Web",
@@ -33,35 +48,65 @@ const projects = [
     url: "https://pusatk3-hiperkesdkijakarta.id",
   },
   {
-    title: "SAP Connect Day for Finance & Spend",
+    title: "Document Management System",
     year: 2026,
-    category: "Web",
-    icon: FileText,
-    gradient: "from-sky-500 to-blue-700",
-    photo: "/assets/projects/sap-connect.png",
-    desc: "A corporate event portal detailing session tracks on agile finance, resilient procurement, and business AI advancements powered by SAP solutions.",
-    url: "https://indomarketservices.com/event/SAP-Connect-Day-for-Finance-and-Spend-Management/",
+    category: "Dashboard",
+    icon: FolderKanban,
+    gradient: "from-cyan-600 to-blue-700",
+    video: "/assets/projects/document-management-system.mp4",
+    desc: "Centralized automated finance document numbering system with integrated archive tracking and project management.",
+    url: "",
   },
   {
-    title: "Metrodata & Google Cloud Gemini Enterprise",
+    title: "SAP Connect Day The Next Stage of Growth",
     year: 2026,
     category: "Web",
     icon: FileText,
-    gradient: "from-blue-500 to-cyan-600",
-    photo: "/assets/projects/metrodata-gemini.png",
-    desc: "An executive event microsite highlighting how to leverage Google Cloud's Gemini Enterprise to build and orchestrate smart AI agents for enterprise competitive edge.",
-    url: "https://indomarketservices.com/event/Metrodata-Google-Cloud-Turning-Gemini-Enterprise-into-Your-Competitive-Edge/",
+    gradient: "from-red-600 to-amber-700",
+    photo: "/assets/projects/sap-connect26.png",
+    desc: "An event microsite for SAP Connect Day: The Next Stage of Growth, highlighting digital transformation strategies, business scalability, and cloud ERP solutions.",
+    url: "https://indomarketservices.com/event/SAP-Connect-Day-The-Next-Stage-of-Growth/",
   },
   {
-    title: "Anaplan Connect Jakarta 2026",
+    title: "Event RSVP Management Dashboard",
     year: 2026,
-    category: "Web",
-    icon: FileText,
-    gradient: "from-blue-600 to-indigo-800",
-    photo: "/assets/projects/anaplan-2026.png",
-    desc: "An elegant event registration web page for Anaplan Connect Jakarta, focusing on AI-driven scenario planning for supply chain and finance leaders.",
-    url: "https://indomarketservices.com/event/Anaplan-Connect-Jakarta-2026/",
+    category: "Dashboard",
+    icon: FolderKanban,
+    gradient: "from-cyan-600 to-blue-700",
+    video: "/assets/projects/data-registrations.mp4",
+    desc: "Modern backend management system for event RSVP marketing, featuring real-time registrant data tracking and exportable reporting.",
+    url: "",
   },
+  // {
+  //   title: "SAP Connect Day for Finance & Spend",
+  //   year: 2026,
+  //   category: "Web",
+  //   icon: FileText,
+  //   gradient: "from-sky-500 to-blue-700",
+  //   photo: "/assets/projects/sap-connect.png",
+  //   desc: "A corporate event portal detailing session tracks on agile finance, resilient procurement, and business AI advancements powered by SAP solutions.",
+  //   url: "https://indomarketservices.com/event/SAP-Connect-Day-for-Finance-and-Spend-Management/",
+  // },
+  // {
+  //   title: "Metrodata & Google Cloud Gemini Enterprise",
+  //   year: 2026,
+  //   category: "Web",
+  //   icon: FileText,
+  //   gradient: "from-blue-500 to-cyan-600",
+  //   photo: "/assets/projects/metrodata-gemini.png",
+  //   desc: "An executive event microsite highlighting how to leverage Google Cloud's Gemini Enterprise to build and orchestrate smart AI agents for enterprise competitive edge.",
+  //   url: "https://indomarketservices.com/event/Metrodata-Google-Cloud-Turning-Gemini-Enterprise-into-Your-Competitive-Edge/",
+  // },
+  // {
+  //   title: "Anaplan Connect Jakarta 2026",
+  //   year: 2026,
+  //   category: "Web",
+  //   icon: FileText,
+  //   gradient: "from-blue-600 to-indigo-800",
+  //   photo: "/assets/projects/anaplan-2026.png",
+  //   desc: "An elegant event registration web page for Anaplan Connect Jakarta, focusing on AI-driven scenario planning for supply chain and finance leaders.",
+  //   url: "https://indomarketservices.com/event/Anaplan-Connect-Jakarta-2026/",
+  // },
   {
     title: "Portfolio Zian Wahidi 2025",
     year: 2025,
@@ -72,16 +117,16 @@ const projects = [
     desc: "My 2025 portfolio website that summarizes my full-stack web development skills, certifications, and completed projects.",
     url: "https://ziianw.github.io/portofolio-zianwahidi/",
   },
-  {
-    title: "AWS Dataiku Enterprise AI Seminar",
-    year: 2026,
-    category: "Web",
-    icon: FileText,
-    gradient: "from-orange-500 to-yellow-600",
-    photo: "/assets/projects/aws-dataiku.png",
-    desc: "An exclusive roundtable seminar page about optimizing SAP and transforming ERP data into AI-driven insights using AWS and Dataiku solutions.",
-    url: "https://indomarketservices.com/event/AWS-Dataiku-MII-Soltius-Transform-ERP-Data-Into-an-Enterprise-Al-Driven-Insights-with-AWS-and-Dataiku/",
-  },
+  // {
+  //   title: "AWS Dataiku Enterprise AI Seminar",
+  //   year: 2026,
+  //   category: "Web",
+  //   icon: FileText,
+  //   gradient: "from-orange-500 to-yellow-600",
+  //   photo: "/assets/projects/aws-dataiku.png",
+  //   desc: "An exclusive roundtable seminar page about optimizing SAP and transforming ERP data into AI-driven insights using AWS and Dataiku solutions.",
+  //   url: "https://indomarketservices.com/event/AWS-Dataiku-MII-Soltius-Transform-ERP-Data-Into-an-Enterprise-Al-Driven-Insights-with-AWS-and-Dataiku/",
+  // },
     {
     title: "Sintetis Academy",
     year: 2025,
@@ -92,26 +137,26 @@ const projects = [
     desc: "Interactive, bilingual educational platform supporting learning ecosystems, focusing on collaboration and skills development.",
     url: "",
   },
-  {
-    title: "Netpoleon Solution Day 2025",
-    year: 2025,
-    category: "Web",
-    icon: FileText,
-    gradient: "from-purple-600 to-indigo-700",
-    photo: "/assets/projects/netpoleon-2025.png",
-    desc: "A conference page built for security leaders, discussing automated defense strategies against cyber threats and safe AI data innovation.",
-    url: "https://indomarketservices.com/event/Netpoleon-Solution-Day-2025/",
-  },
-  {
-    title: "Google Cloud Jakarta Golf Tournament",
-    year: 2025,
-    category: "Web",
-    icon: FileText,
-    gradient: "from-green-600 to-emerald-700",
-    photo: "/assets/projects/google-golf.png",
-    desc: "A clean and sporty tournament registration landing page built for the Google Cloud Jakarta executive networking event at Pondok Indah Golf Course.",
-    url: "https://indomarketservices.com/event/Google-Cloud-Jakarta-Golf-Tournament/",
-  },
+  // {
+  //   title: "Netpoleon Solution Day 2025",
+  //   year: 2025,
+  //   category: "Web",
+  //   icon: FileText,
+  //   gradient: "from-purple-600 to-indigo-700",
+  //   photo: "/assets/projects/netpoleon-2025.png",
+  //   desc: "A conference page built for security leaders, discussing automated defense strategies against cyber threats and safe AI data innovation.",
+  //   url: "https://indomarketservices.com/event/Netpoleon-Solution-Day-2025/",
+  // },
+  // {
+  //   title: "Google Cloud Jakarta Golf Tournament",
+  //   year: 2025,
+  //   category: "Web",
+  //   icon: FileText,
+  //   gradient: "from-green-600 to-emerald-700",
+  //   photo: "/assets/projects/google-golf.png",
+  //   desc: "A clean and sporty tournament registration landing page built for the Google Cloud Jakarta executive networking event at Pondok Indah Golf Course.",
+  //   url: "https://indomarketservices.com/event/Google-Cloud-Jakarta-Golf-Tournament/",
+  // },
     {
     title: "PT. Srikandi Katiga",
     year: 2025,
@@ -271,13 +316,24 @@ export default function Projects() {
                     shift={10}
                     className="glass-strong rounded-2xl overflow-hidden cursor-default group h-full flex flex-col"
                   >
-                    {/* Thumbnail area — supports photo or gradient fallback */}
+                    {/* Thumbnail area — supports video, photo, or gradient fallback */}
                     <div
                       className={`relative h-40 flex items-center justify-center overflow-hidden ${
-                        p.photo ? "" : `bg-gradient-to-br ${p.gradient}`
+                        p.video || p.photo ? "" : `bg-gradient-to-br ${p.gradient}`
                       }`}
                     >
-                      {p.photo ? (
+                      {p.video ? (
+                        <video
+                          src={p.video}
+                          className="absolute inset-0 w-full h-full object-cover"
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          preload="metadata"
+                          aria-label={p.title}
+                        />
+                      ) : p.photo ? (
                         <img
                           src={p.photo}
                           alt={p.title}

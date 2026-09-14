@@ -24,3 +24,8 @@ lerna-debug.log*
 .idea 
 .DS_Store
 .vercel
+
+# Environment variables — JANGAN pernah di-commit
+.env
+.env.*
+!.env.example

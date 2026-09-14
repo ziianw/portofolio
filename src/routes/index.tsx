@@ -13,6 +13,7 @@ import Testimonials from "@/components/Testimonials";
 import Certifications from "@/components/Certifications";
 import Gallery from "@/components/Gallery";
 import Contact from "@/components/Contact";
+import AIChat from "@/components/AIChat";
 import CustomCursor from "@/components/CustomCursor";
 
 const Scene3D = lazy(() => import("@/components/Scene3D"));
@@ -158,6 +159,7 @@ function Index() {
             {/* <Gallery /> */}
             <Contact />
           </main>
+          <AIChat />
         </>
       )}
     </div>
